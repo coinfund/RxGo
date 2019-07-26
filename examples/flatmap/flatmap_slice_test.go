@@ -3,8 +3,8 @@ package main
 import (
 	"testing"
 
-	"github.com/reactivex/rxgo/observable"
-	"github.com/reactivex/rxgo/observer"
+	"github.com/coinfund/rxgo/observable"
+	"github.com/coinfund/rxgo/observer"
 )
 
 func TestFlatMapExample(t *testing.T) {

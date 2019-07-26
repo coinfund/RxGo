@@ -3,8 +3,8 @@ package observable
 import (
 	"sync"
 
-	"github.com/reactivex/rxgo/handlers"
-	"github.com/reactivex/rxgo/observer"
+	"github.com/coinfund/rxgo/handlers"
+	"github.com/coinfund/rxgo/observer"
 )
 
 // transforms emitted items into observables and flattens them into single observable.
@@ -64,3 +64,53 @@ func newFlattenEmissionObserver(out chan interface{}) *observer.Observer {
 	}))
 	return &ob
 }
+
+/*
+
+func flatObservedSequence(out chan interface{}, o Observable, apply func(interface{}) Observable, maxInParallel uint) {
+	var (
+		wg    sync.WaitGroup
+		count uint
+	)
+
+	defer close(out)
+	emissionObserver := newFlattenEmissionObserver(out)
+
+	count = 0
+	for element := range o {
+		var sequence Observable = apply(element)
+		count++
+		wg.Add(1)
+		go func() {
+			copy := element
+			defer wg.Done()
+			for {
+				sub := sequence.Subscribe(emissionObserver)
+				select {
+				case s := <-sub:
+					log.Println(s, copy)
+					return
+				default:
+					log.Println("rxgo waiting", copy)
+					time.Sleep(250 * time.Millisecond)
+				}
+			}
+
+		}()
+
+		if count%maxInParallel == 0 {
+			wg.Wait()
+		}
+	}
+
+	wg.Wait()
+}
+
+func newFlattenEmissionObserver(out chan interface{}) observer.Observer {
+	ob := observer.New(handlers.NextFunc(func(element interface{}) {
+		out <- element
+	}))
+	return ob
+}
+
+*/

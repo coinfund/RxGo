@@ -1,21 +1,21 @@
-# RxGo
-[![Join the chat at https://gitter.im/ReactiveX/RxGo](https://badges.gitter.im/ReactiveX/RxGo.svg)](https://gitter.im/ReactiveX/RxGo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/ReactiveX/RxGo.svg?branch=master)](https://travis-ci.org/ReactiveX/RxGo)
-[![Coverage Status](https://coveralls.io/repos/github/ReactiveX/RxGo/badge.svg?branch=master)](https://coveralls.io/github/ReactiveX/RxGo?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/reactivex/rxgo)](https://goreportcard.com/report/github.com/reactivex/rxgo)
+# rxgo
+[![Join the chat at https://gitter.im/ReactiveX/rxgo](https://badges.gitter.im/ReactiveX/rxgo.svg)](https://gitter.im/ReactiveX/rxgo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/ReactiveX/rxgo.svg?branch=master)](https://travis-ci.org/ReactiveX/rxgo)
+[![Coverage Status](https://coveralls.io/repos/github/ReactiveX/rxgo/badge.svg?branch=master)](https://coveralls.io/github/ReactiveX/rxgo?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/coinfund/rxgo)](https://goreportcard.com/report/github.com/coinfund/rxgo)
 
 Reactive Extensions for the Go Language
 
 ## Call for Maintainers
-The development of RxGo v2 has started (`v2` branch). Ongoing discussions can be found in [#99](https://github.com/ReactiveX/RxGo/issues/99). 
+The development of rxgo v2 has started (`v2` branch). Ongoing discussions can be found in [#99](https://github.com/ReactiveX/rxgo/issues/99). 
 
 We are welcoming anyone who's willing to help us maintaining or would like to become a core developer to get in touch with us.
 
 ## Contributions
-All contributions are welcome, both in development and documentation! Be sure you check out [contributions](https://github.com/ReactiveX/RxGo/wiki/Contributions) and [roadmap](https://github.com/ReactiveX/RxGo/wiki/Roadmap).
+All contributions are welcome, both in development and documentation! Be sure you check out [contributions](https://github.com/ReactiveX/rxgo/wiki/Contributions) and [roadmap](https://github.com/ReactiveX/rxgo/wiki/Roadmap).
 
 ## Getting Started
-[ReactiveX](http://reactivex.io/), or Rx for short, is an API for programming with observable streams. This is a ReactiveX API for the Go language.
+[ReactiveX](http://coinfund.io/), or Rx for short, is an API for programming with observable streams. This is a ReactiveX API for the Go language.
 
 *ReactiveX* is a new, alternative way of asynchronous programming to callbacks, promises and deferred. It is about processing streams of events or items, with events being any occurrences or changes within the system.
 
@@ -47,7 +47,7 @@ sub := observable.Subscribe(handlers.NextFunc(nextHandler))
 ## Install
 
 ```bash
-go get -u github.com/reactivex/rxgo
+go get -u github.com/coinfund/rxgo
 ```
 
 ## Importing the Rx package
@@ -55,10 +55,10 @@ Certain types, such as `observer.Observer` and `observable.Observable` are organ
 
 ```go
 import (
-	"github.com/reactivex/rxgo"
-	"github.com/reactivex/rxgo/observer"
-	"github.com/reactivex/rxgo/observable"
-	"github.com/reactivex/rxgo/iterable"
+	"github.com/coinfund/rxgo"
+	"github.com/coinfund/rxgo/observer"
+	"github.com/coinfund/rxgo/observable"
+	"github.com/coinfund/rxgo/iterable"
 	//...
 )
 ```
@@ -108,9 +108,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/reactivex/rxgo/handlers"
-	"github.com/reactivex/rxgo/observable"
-	"github.com/reactivex/rxgo/observer"
+	"github.com/coinfund/rxgo/handlers"
+	"github.com/coinfund/rxgo/observable"
+	"github.com/coinfund/rxgo/observer"
 )
 
 func main() {
@@ -145,9 +145,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/reactivex/rxgo/handlers"
-	"github.com/reactivex/rxgo/observable"
-	"github.com/reactivex/rxgo/observer"
+	"github.com/coinfund/rxgo/handlers"
+	"github.com/coinfund/rxgo/observable"
+	"github.com/coinfund/rxgo/observer"
 )
 
 func main() {
@@ -183,7 +183,7 @@ An `Observable` is a synchronous stream of "emitted" values which can be either 
 Start          value            value             error              Done
 ```
 
-In **RxGo**, it's useful to think of `Observable` and `Connectable` as channels with additional ability to `Subscribe` handlers. In fact, they are basically channels. When `Subscribe` method is called on a `Observable` (or `Connect` method in case of `Connectable`), one or more goroutines are spawned to handle asynchronous processing.
+In **rxgo**, it's useful to think of `Observable` and `Connectable` as channels with additional ability to `Subscribe` handlers. In fact, they are basically channels. When `Subscribe` method is called on a `Observable` (or `Connect` method in case of `Connectable`), one or more goroutines are spawned to handle asynchronous processing.
 
 Most Observable methods and operators will return the Observable itself, making it chainable.
 

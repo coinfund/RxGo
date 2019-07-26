@@ -1,8 +1,8 @@
 package observer
 
 import (
-	"github.com/reactivex/rxgo"
-	"github.com/reactivex/rxgo/handlers"
+	"github.com/coinfund/rxgo"
+	"github.com/coinfund/rxgo/handlers"
 )
 
 // Observer represents a group of EventHandlers.

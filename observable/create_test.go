@@ -3,8 +3,8 @@ package observable
 import (
 	"testing"
 
-	"github.com/reactivex/rxgo/errors"
-	"github.com/reactivex/rxgo/observer"
+	"github.com/coinfund/rxgo/errors"
+	"github.com/coinfund/rxgo/observer"
 	"github.com/stretchr/testify/mock"
 )
 

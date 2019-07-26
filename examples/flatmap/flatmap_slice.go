@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/reactivex/rxgo/handlers"
-	"github.com/reactivex/rxgo/observable"
-	"github.com/reactivex/rxgo/observer"
+	"github.com/coinfund/rxgo/handlers"
+	"github.com/coinfund/rxgo/observable"
+	"github.com/coinfund/rxgo/observer"
 )
 
 func main() {
