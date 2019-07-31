@@ -7,6 +7,8 @@ import (
 	"github.com/coinfund/rxgo/observer"
 )
 
+// TODO: FlatMap does not pass through errors.
+
 // transforms emitted items into observables and flattens them into single observable.
 // maxInParallel argument controls how many transformed observables are processed in parallel
 // For an example please take a look at flatmap_slice_test.go file in the examples directory.

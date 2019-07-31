@@ -426,6 +426,11 @@ func Just(item interface{}, items ...interface{}) Observable {
 	return Observable(source)
 }
 
+// Throw creates an Observable with the provided error.
+func Throw(err error) Observable {
+	return Just(err)
+}
+
 // Start creates an Observable from one or more directive-like EmittableFunc
 // and emits the result of each operation asynchronously on a new Observable.
 func Start(f fx.EmittableFunc, fs ...fx.EmittableFunc) Observable {
@@ -453,4 +458,32 @@ func Start(f fx.EmittableFunc, fs ...fx.EmittableFunc) Observable {
 	}()
 
 	return Observable(source)
+}
+
+// Delay shifts the emissions from an Observable forward in time by a
+// particular amount.
+func (o Observable) Delay(d time.Duration) Observable {
+	var delay fx.MappableFunc = func(item interface{}) interface{} {
+		time.Sleep(d)
+		return item
+	}
+	return o.Map(delay)
+}
+
+// Merge combines multiple Observables into one by merging their emissions.
+// OnError are passed through, OnDone is not.
+func Merge(o Observable, os ...Observable) Observable {
+	identity := func(observable interface{}) Observable {
+		return observable.(Observable)
+	}
+	is := make([]interface{}, 0)
+	if len(os) > 0 {
+		for _, item := range os {
+			is = append(is, item)
+		}
+		return Just(o, is...).FlatMap(identity, uint(len(os)))
+	} else {
+		return Just(o).FlatMap(identity, uint(len(os)))
+	}
+
 }
